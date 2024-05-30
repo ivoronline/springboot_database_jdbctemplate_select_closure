@@ -41,7 +41,7 @@ public class MyService {
   //Automatically cycles through resultSet and adds personDTO to a List
   public List<PersonDTO> selectRecords(Integer id) {
     return jdbcTemplate.query(
-      "SELECT * FROM PERSON WHERE ID > " + id,
+      "SELECT * FROM PERSON WHERE ID >= " + id,
       (resultSet, rowNum) -> {                    //NEXT RECORD
 
         //CREATE DTO
@@ -63,7 +63,7 @@ public class MyService {
   //We manually cycle through resultSet adding personDTO to a List.
   public List<PersonDTO> selectRecordsManually(Integer id) {
     return jdbcTemplate.query(
-      "SELECT * FROM PERSON WHERE ID > " + id,
+      "SELECT * FROM PERSON WHERE ID >= " + id,
       resultSet -> {
         List<PersonDTO> personDTOList = new ArrayList<>();
         while(resultSet.next()) {              //NEXT RECORD
